@@ -10,7 +10,13 @@
 </head>
 
 <body>
-    <!-- Navigation -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <div class="top-left">Call : (+91) 78785 85701 &nbsp; | &nbsp; Email : info@dealfree.com</div>
+            <div class="top-right">Login/Register</div>
+        </div>
+    </div>
+
     <nav class="navbar">
         <div class="container">
             <div class="logo">DealFree</div>
@@ -21,25 +27,32 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            <div class="nav-action"><a class="btn-book" href="#">Book Now</a></div>
         </div>
     </nav>
 
     <main>
-        <!-- Hero Section -->
         <section id="home" class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>Find Your Dream Home Without Brokers</h1>
-                    <p class="hero-subtitle">Direct property deals • Zero brokerage • Verified listings</p>
-                    <div class="search-box">
-                        <input type="text" placeholder="Search for properties, localities...">
-                        <button class="btn-primary">Search</button>
-                    </div>
+            <div class="hero-overlay"></div>
+            <div class="container hero-inner">
+                <div class="hero-text">
+                    <p class="eyebrow">WELCOME TO DEALFREE</p>
+                    <h1>Invest Today in<br> Your Dream Home</h1>
+                    <p class="hero-subtitle">Discover verified listings, compare prices, and contact sellers directly. No middlemen, just great deals.</p>
+                    <p class="hero-cts"><a class="btn-primary" href="properties.html">View Property</a> <a class="btn-outline" href="contact.html">Contact Now</a></p>
                 </div>
+            </div>
+
+            <div class="search-panel container">
+                <input class="search-input" type="text" placeholder="Enter keywords">
+                <select class="search-select"><option>Sell or Rent</option></select>
+                <select class="search-select"><option>Property Type</option></select>
+                <select class="search-select"><option>Location</option></select>
+                <select class="search-select"><option>Amenities</option></select>
+                <button class="btn-search">Search</button>
             </div>
         </section>
 
-        <!-- Quick Info Section -->
         <section class="services">
             <div class="container">
                 <h2 class="section-title">Why Choose DealFree?</h2>
@@ -69,7 +82,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
