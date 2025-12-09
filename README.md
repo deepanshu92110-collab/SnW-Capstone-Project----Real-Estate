@@ -7,13 +7,14 @@
 **Mentor:** Swati Priya Ma'am  
 **Project Theme:** Real Estate  
 **Reference Website:** NoBroker.in  
-**Submission Date:** November 2025 (Mid Evaluation)
+**Phase 1 Submission:** November 2025 (Mid Evaluation)  
+**Phase 2 Submission:** December 2025 (Final Evaluation)
 
 ---
 
 ## 📋 Project Overview
 
-DealFree is a static real estate website that enables users to browse properties, learn about services, and contact property owners directly - eliminating broker fees. This project showcases fundamental web development skills using **HTML5** and **CSS3** only.
+DealFree is an interactive real estate website that enables users to browse properties, learn about services, and contact property owners directly - eliminating broker fees. This project showcases fundamental web development skills using **HTML5**, **CSS3**, and **Vanilla JavaScript**.
 
 ---
 
@@ -64,8 +65,9 @@ DealFree is a static real estate website that enables users to browse properties
 
 ## 🛠️ Technologies Used
 
-- **HTML5** - Semantic markup, forms, accessibility
-- **CSS3** - Flexbox, Grid, animations, gradients, media queries
+- **HTML5** - Semantic markup, forms, data attributes, accessibility
+- **CSS3** - Flexbox, Grid, animations, gradients, transitions, media queries
+- **JavaScript (ES6+)** - DOM manipulation, event handling, array methods, filtering, sorting
 - **Google Fonts** - Poppins font family
 - **Responsive Design** - Mobile-first approach
 
@@ -161,39 +163,101 @@ All 5 pages are now accessible through the navigation menu.
 
 Through this project, I have demonstrated:
 
-✅ HTML5 semantic elements and structure  
-✅ CSS3 advanced styling (Flexbox, Grid, animations)  
+✅ HTML5 semantic elements and data attributes  
+✅ CSS3 advanced styling (Flexbox, Grid, animations, transitions)  
+✅ Vanilla JavaScript DOM manipulation  
+✅ Event handling and user interactions  
+✅ Dynamic filtering and sorting algorithms  
 ✅ Responsive web design principles  
-✅ Form design and validation attributes  
+✅ Form design and validation  
 ✅ Modern UI/UX design patterns  
-✅ Code organization and comments  
+✅ Code organization and clean code practices  
 ✅ Cross-browser compatibility  
 
 ---
 
-## 🔜 Phase 2 Plans (JavaScript Integration)
+## ✅ Phase 2 - JavaScript Implementation (Completed)
 
-In the next phase (December 2025), I plan to add:
+Phase 2 has been successfully completed with the following JavaScript features:
 
-- Interactive property search and filtering
-- Form validation and submission handling
-- Image carousel/slider for properties
-- Property details modal/popup
-- Dynamic content loading
-- Interactive navigation (hamburger menu)
-- Smooth animations and scroll effects
-- Contact form email integration
+### 1. **Login/Register Popup Modal (index.html)**
+- Full-screen overlay with dark background
+- Animated popup form with email validation
+- Multiple close methods: X button, overlay click, Escape key
+- Body scroll lock when popup is active
+- Success alert on form submission
+
+### 2. **Smooth Scroll Navigation (index.html)**
+- Hero buttons converted to smooth scroll anchors
+- "View Property" scrolls to services section
+- "Contact Now" scrolls to footer
+- Smooth `scrollIntoView()` animation
+
+### 3. **Featured Properties Search & Filter (index.html)**
+- Live property grid with 6 sample cards
+- Real-time text search on property titles
+- Multiple filter dropdowns: Type, Location, Amenities
+- Data attributes for filtering logic
+- Dynamic show/hide with CSS `.hidden` class
+
+### 4. **Expandable Service Cards (services.html)**
+- Click-to-expand accordion system for 6 service cards
+- Rotating arrow indicators (▼ ↔ ▲)
+- Smooth max-height transitions
+- Hover effects on headers
+- All service details collapsed by default
+
+### 5. **Advanced Property Filtering (properties.html)**
+- Comprehensive filter bar with:
+  - Status filter (All/For Sale/For Rent)
+  - City filter (Mumbai/Bangalore/Delhi/Hyderabad/Gurgaon)
+  - Min/Max price range inputs
+- Data attributes: `data-status`, `data-city`, `data-price`, `data-area`
+- Auto-filter on dropdown change
+- Reset button to clear all filters
+- 9 properties with complete filtering support
+
+### 6. **Property Sorting System (properties.html)**
+- Toggle buttons for Price and Area sorting
+- Dynamic switching between Low to High ↑ and High to Low ↓
+- DOM reordering using `appendChild()`
+- Preserves active filters while sorting
+- Visual arrow indicators for sort direction
+
+### JavaScript Techniques Implemented:
+- DOM manipulation (`querySelector`, `classList`, `getAttribute`)
+- Event handling (click, change, input, keydown events)
+- Array methods (`Array.from()`, `forEach()`, `sort()`)
+- Conditional filtering logic
+- Dynamic content updates
+- Smooth animations with CSS transitions
+- Data attribute-based filtering
+
+### CSS Enhancements Added:
+- Auth popup overlay and modal styles
+- Filter bar with styled inputs and dropdowns
+- Sort bar with hover animations
+- Expandable service card transitions
+- Hidden utility class for filtering
+- Responsive mobile layouts for all new features
+
+**Total Lines of JavaScript:** 150+  
+**New CSS Classes:** 12+  
+**Interactive Elements:** 20+  
+**Event Listeners:** 15+
 
 ---
 
 ## 📝 Notes for Evaluation
 
-- This is a **Phase 1 submission** - Pure HTML & CSS only
+- This is a **Phase 2 submission** - HTML, CSS, and Vanilla JavaScript
 - All code is written from scratch (no frameworks/libraries except Google Fonts)
 - The website is fully responsive and tested on multiple devices
 - Design inspired by NoBroker.in but created with original content and layout
 - Follows web accessibility best practices
-- Clean, commented, and well-organized code
+- Clean code without comments (as requested)
+- All JavaScript features use vanilla ES6+ syntax
+- No jQuery or external libraries used
 
 ---
 
@@ -211,7 +275,8 @@ In the next phase (December 2025), I plan to add:
 
 **Deepanshu**  
 SNW Capstone Project  
-November 2025
+Phase 1: November 2025  
+Phase 2: December 2025
 
 ---
 

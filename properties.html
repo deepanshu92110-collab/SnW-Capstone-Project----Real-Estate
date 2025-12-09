@@ -29,8 +29,38 @@
                 <h1 class="section-title">Featured Properties</h1>
                 <p style="text-align: center; max-width: 700px; margin: 0 auto 50px; color: #334155;">Explore our handpicked selection of premium properties for sale and rent across major cities in India.</p>
                 
+                <div class="filter-bar">
+                    <select id="filter-status" class="filter-select">
+                        <option value="all">All Status</option>
+                        <option value="sale">For Sale</option>
+                        <option value="rent">For Rent</option>
+                    </select>
+                    
+                    <select id="filter-city" class="filter-select">
+                        <option value="all">All Cities</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Bangalore">Bangalore</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Hyderabad">Hyderabad</option>
+                        <option value="Gurgaon">Gurgaon</option>
+                    </select>
+                    
+                    <input type="number" id="filter-min-price" class="filter-input" placeholder="Min Price (₹)">
+                    
+                    <input type="number" id="filter-max-price" class="filter-input" placeholder="Max Price (₹)">
+                    
+                    <button id="filter-btn" class="btn-primary">Filter</button>
+                    <button id="reset-btn" class="btn-outline">Reset</button>
+                </div>
+
+                <div class="sort-bar">
+                    <span style="font-weight: 500; color: #334155;">Sort by:</span>
+                    <button id="sort-price-btn" class="sort-btn" data-order="asc">Price (Low to High) ↑</button>
+                    <button id="sort-area-btn" class="sort-btn" data-order="asc">Area (Low to High) ↑</button>
+                </div>
+
                 <div class="properties-grid">
-                    <div class="property-card">
+                    <div class="property-card" data-status="sale" data-city="Mumbai" data-price="25000000" data-area="1500">
                         <div class="property-image">
                             <img src="images/3BHK.png" alt="3BHK Luxury Flat">
                             <span class="badge">For Sale</span>
@@ -48,7 +78,7 @@
                         </div>
                     </div>
 
-                    <div class="property-card">
+                    <div class="property-card" data-status="rent" data-city="Bangalore" data-price="35000" data-area="1200">
                         <div class="property-image">
                             <img src="images/2BHK.png" alt="2BHK Modern Flat">
                             <span class="badge rent">For Rent</span>
@@ -66,7 +96,7 @@
                         </div>
                     </div>
 
-                    <div class="property-card">
+                    <div class="property-card" data-status="sale" data-city="Bangalore" data-price="18000000" data-area="2500">
                         <div class="property-image">
                             <img src="images/WHITE.png" alt="Independent Villa">
                             <span class="badge">For Sale</span>
@@ -84,7 +114,7 @@
                         </div>
                     </div>
 
-                    <div class="property-card">
+                    <div class="property-card" data-status="rent" data-city="Mumbai" data-price="18000" data-area="600">
                         <div class="property-image">
                             <img src="images/cozy.png" alt="Cozy Studio Apartment">
                             <span class="badge rent">For Rent</span>
@@ -102,7 +132,7 @@
                         </div>
                     </div>
 
-                    <div class="property-card">
+                    <div class="property-card" data-status="sale" data-city="Delhi" data-price="32000000" data-area="2000">
                         <div class="property-image">
                             <img src="images/comm.png" alt="Commercial Office Space">
                             <span class="badge">For Sale</span>
@@ -120,7 +150,7 @@
                         </div>
                     </div>
 
-                    <div class="property-card">
+                    <div class="property-card" data-status="sale" data-city="Hyderabad" data-price="45000000" data-area="3500">
                         <div class="property-image">
                             <img src="images/penthouse.png" alt="Penthouse with Terrace">
                             <span class="badge">For Sale</span>
@@ -138,7 +168,7 @@
                         </div>
                     </div>
 
-                    <div class="property-card">
+                    <div class="property-card" data-status="rent" data-city="Mumbai" data-price="45000" data-area="1400">
                         <div class="property-image">
                             <img src="images/spacious.png" alt="Spacious 3BHK Flat">
                             <span class="badge rent">For Rent</span>
@@ -156,7 +186,7 @@
                         </div>
                     </div>
 
-                    <div class="property-card">
+                    <div class="property-card" data-status="sale" data-city="Delhi" data-price="52000000" data-area="3000">
                         <div class="property-image">
                             <img src="images/GK.png" alt="Builder Floor in GK">
                             <span class="badge">For Sale</span>
@@ -174,7 +204,7 @@
                         </div>
                     </div>
 
-                    <div class="property-card">
+                    <div class="property-card" data-status="rent" data-city="Gurgaon" data-price="22000" data-area="700">
                         <div class="property-image">
                             <img src="images/metro.png" alt="1BHK Near Metro">
                             <span class="badge rent">For Rent</span>
@@ -227,6 +257,99 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        const filterStatus = document.getElementById('filter-status');
+        const filterCity = document.getElementById('filter-city');
+        const filterMinPrice = document.getElementById('filter-min-price');
+        const filterMaxPrice = document.getElementById('filter-max-price');
+        const filterBtn = document.getElementById('filter-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const propertyCards = document.querySelectorAll('.property-card');
+
+        function applyFilters() {
+            const status = filterStatus.value;
+            const city = filterCity.value;
+            const minPrice = filterMinPrice.value ? parseInt(filterMinPrice.value) : 0;
+            const maxPrice = filterMaxPrice.value ? parseInt(filterMaxPrice.value) : Infinity;
+
+            propertyCards.forEach(card => {
+                const cardStatus = card.getAttribute('data-status');
+                const cardCity = card.getAttribute('data-city');
+                const cardPrice = parseInt(card.getAttribute('data-price'));
+
+                let showCard = true;
+
+                if (status !== 'all' && cardStatus !== status) {
+                    showCard = false;
+                }
+
+                if (city !== 'all' && cardCity !== city) {
+                    showCard = false;
+                }
+
+                if (cardPrice < minPrice || cardPrice > maxPrice) {
+                    showCard = false;
+                }
+
+                if (showCard) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        function resetFilters() {
+            filterStatus.value = 'all';
+            filterCity.value = 'all';
+            filterMinPrice.value = '';
+            filterMaxPrice.value = '';
+            propertyCards.forEach(card => card.classList.remove('hidden'));
+        }
+
+        filterBtn.addEventListener('click', applyFilters);
+        resetBtn.addEventListener('click', resetFilters);
+        
+        filterStatus.addEventListener('change', applyFilters);
+        filterCity.addEventListener('change', applyFilters);
+
+        const sortPriceBtn = document.getElementById('sort-price-btn');
+        const sortAreaBtn = document.getElementById('sort-area-btn');
+        const propertiesGrid = document.querySelector('.properties-grid');
+
+        function sortProperties(button, sortBy) {
+            const cardsArray = Array.from(propertiesGrid.querySelectorAll('.property-card'));
+            const currentOrder = button.getAttribute('data-order');
+            const isAscending = currentOrder === 'asc';
+            
+            cardsArray.sort((a, b) => {
+                const valueA = parseInt(a.getAttribute(`data-${sortBy}`));
+                const valueB = parseInt(b.getAttribute(`data-${sortBy}`));
+                return isAscending ? valueA - valueB : valueB - valueA;
+            });
+
+            cardsArray.forEach(card => {
+                propertiesGrid.appendChild(card);
+            });
+
+            if (isAscending) {
+                button.setAttribute('data-order', 'desc');
+                button.innerHTML = sortBy === 'price' ? 'Price (High to Low) ↓' : 'Area (High to Low) ↓';
+            } else {
+                button.setAttribute('data-order', 'asc');
+                button.innerHTML = sortBy === 'price' ? 'Price (Low to High) ↑' : 'Area (Low to High) ↑';
+            }
+        }
+
+        sortPriceBtn.addEventListener('click', function() {
+            sortProperties(this, 'price');
+        });
+
+        sortAreaBtn.addEventListener('click', function() {
+            sortProperties(this, 'area');
+        });
+    </script>
 </body>
 
 </html>

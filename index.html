@@ -13,7 +13,25 @@
     <div class="topbar">
         <div class="container topbar-inner">
             <div class="top-left">Call : (+91) 78785 85701 &nbsp; | &nbsp; Email : info@dealfree.com</div>
-            <div class="top-right">Login/Register</div>
+            <div class="top-right" style="cursor: pointer;">Login/Register</div>
+        </div>
+    </div>
+
+    <div id="authOverlay" class="auth-overlay">
+        <div class="auth-popup">
+            <span class="auth-close">&times;</span>
+            <h2>Welcome to DealFree</h2>
+            <p style="text-align: center; color: #64748b; margin-bottom: 25px;">Login or create an account to continue</p>
+            
+            <form class="auth-form">
+                <input type="email" placeholder="Email Address" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Login</button>
+            </form>
+            
+            <p style="text-align: center; margin-top: 20px; color: #64748b; font-size: 14px;">
+                Don't have an account? <a href="#" style="color: #2563eb; font-weight: 600;">Register here</a>
+            </p>
         </div>
     </div>
 
@@ -39,7 +57,7 @@
                     <p class="eyebrow">WELCOME TO DEALFREE</p>
                     <h1>Invest Today in<br> Your Dream Home</h1>
                     <p class="hero-subtitle">Discover verified listings, compare prices, and contact sellers directly. No middlemen, just great deals.</p>
-                    <p class="hero-cts"><a class="btn-primary" href="properties.html">View Property</a> <a class="btn-outline" href="contact.html">Contact Now</a></p>
+                    <p class="hero-cts"><a class="btn-primary" href="#why-choose">View Property</a> <a class="btn-outline" href="#footer-contact">Contact Now</a></p>
                 </div>
             </div>
 
@@ -53,7 +71,7 @@
             </div>
         </section>
 
-        <section class="services">
+        <section id="why-choose" class="services">
             <div class="container">
                 <h2 class="section-title">Why Choose DealFree?</h2>
                 <div class="services-grid">
@@ -82,7 +100,7 @@
         </section>
     </main>
 
-    <footer class="footer">
+    <footer id="footer-contact" class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -113,6 +131,59 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        const authOverlay = document.getElementById('authOverlay');
+        const topRight = document.querySelector('.top-right');
+        const authClose = document.querySelector('.auth-close');
+        const authForm = document.querySelector('.auth-form');
+
+        topRight.addEventListener('click', function() {
+            authOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        authClose.addEventListener('click', function() {
+            authOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        authOverlay.addEventListener('click', function(e) {
+            if (e.target === authOverlay) {
+                authOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        authForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            alert('Welcome! Login successful for: ' + email);
+            authOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            this.reset();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && authOverlay.classList.contains('active')) {
+                authOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = this.getAttribute('href');
+                if (target !== '#' && document.querySelector(target)) {
+                    e.preventDefault();
+                    document.querySelector(target).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
